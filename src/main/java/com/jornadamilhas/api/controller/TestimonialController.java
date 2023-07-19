@@ -1,7 +1,7 @@
 package com.jornadamilhas.api.controller;
 
 import com.jornadamilhas.api.model.testimonial.*;
-import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class TestimonialController
 
     @PostMapping
     @Transactional
-    public ResponseEntity postTestimonial(@RequestBody TestimonialPostData testimonialPostData, UriComponentsBuilder uriComponentsBuilder)
+    public ResponseEntity postTestimonial(@RequestBody @Valid TestimonialPostData testimonialPostData, UriComponentsBuilder uriComponentsBuilder)
     {
         Testimonial testimonial = new Testimonial(testimonialPostData);
         repository.save(testimonial);
@@ -36,13 +36,9 @@ public class TestimonialController
     public ResponseEntity getDetailedTestimonial(@PathVariable Long id)
     {
         if(repository.getReferenceById(id).isActive())
-        {
             return ResponseEntity.ok(new TestimonialDetailedData(repository.getReferenceById(id)));
-        }
         else
-        {
             return ResponseEntity.notFound().build();
-        }
     }
 
     @GetMapping("/home")
@@ -64,7 +60,7 @@ public class TestimonialController
 
     @PutMapping
     @Transactional
-    public ResponseEntity putTestimonial(@RequestBody TestimonialPutData testimonialPutData)
+    public ResponseEntity putTestimonial(@RequestBody @Valid TestimonialPutData testimonialPutData)
     {
         Testimonial testimonial = repository.getReferenceById(testimonialPutData.id());
         testimonial.dataUpdate(testimonialPutData);

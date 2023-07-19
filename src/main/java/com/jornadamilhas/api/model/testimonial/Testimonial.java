@@ -1,5 +1,6 @@
 package com.jornadamilhas.api.model.testimonial;
 
+import com.jornadamilhas.api.model.infrastructure.StringValidation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,8 +36,13 @@ public class Testimonial
 
     public void dataUpdate(TestimonialPutData testimonialPutData)
     {
-        this.personName = testimonialPutData.personName();
-        this.testimonialText = testimonialPutData.testimonialText();
-        this.imagePath = testimonialPutData.imagePath();
+        if(!StringValidation.isNullEmptyOrBlank(testimonialPutData.personName()))
+            this.personName = testimonialPutData.personName();
+
+        if(!StringValidation.isNullEmptyOrBlank(testimonialPutData.testimonialText()))
+            this.testimonialText = testimonialPutData.testimonialText();
+
+        if(!StringValidation.isNullEmptyOrBlank(testimonialPutData.imagePath()))
+            this.imagePath = testimonialPutData.imagePath();
     }
 }
