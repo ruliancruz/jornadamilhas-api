@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
-@RequestMapping("depoimentos")
+@RequestMapping
 public class TestimonialController
 {
+    private static final String DEFAULT_REQUEST_PATH = "depoimentos";
     private static final int RANDOM_TESTIMONIALS_QUANTITY = 3;
     final TestimonialRepository repository;
 
@@ -23,7 +24,7 @@ public class TestimonialController
         this.repository = repository;
     }
 
-    @PostMapping
+    @PostMapping(DEFAULT_REQUEST_PATH)
     @Transactional
     public ResponseEntity postTestimonial(@RequestBody @Valid TestimonialPostData testimonialPostData, UriComponentsBuilder uriComponentsBuilder)
     {
@@ -32,7 +33,7 @@ public class TestimonialController
         return ResponseEntity.created(uriComponentsBuilder.path("/depoimentos/{id}").buildAndExpand(testimonial.getId()).toUri()).body(new TestimonialDetailedData(testimonial));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(DEFAULT_REQUEST_PATH + "/{id}")
     public ResponseEntity getDetailedTestimonial(@PathVariable Long id)
     {
         if(repository.getReferenceById(id).isActive())
@@ -41,7 +42,7 @@ public class TestimonialController
             return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/home")
+    @GetMapping(DEFAULT_REQUEST_PATH + "-home")
     public ResponseEntity<List<TestimonialGetData>> getRandomTestimonials()
     {
         List testimonialDataList = new ArrayList<>(repository.findAll().stream().filter(testimonial -> testimonial.isActive()).map(TestimonialGetData::new).toList());
@@ -58,7 +59,7 @@ public class TestimonialController
         return ResponseEntity.ok(randomSelectedTestimonialDataList);
     }
 
-    @PutMapping
+    @PutMapping(DEFAULT_REQUEST_PATH)
     @Transactional
     public ResponseEntity putTestimonial(@RequestBody @Valid TestimonialPutData testimonialPutData)
     {
@@ -67,7 +68,7 @@ public class TestimonialController
         return ResponseEntity.ok(new TestimonialDetailedData(testimonial));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(DEFAULT_REQUEST_PATH + "/{id}")
     @Transactional
     public ResponseEntity deleteTestimonial(@PathVariable Long id)
     {
