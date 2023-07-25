@@ -19,9 +19,9 @@ public class TestimonialController
     private static final int RANDOM_TESTIMONIALS_QUANTITY = 3;
     final private TestimonialRepository repository;
 
-    public TestimonialController(TestimonialRepository repository)
+    public TestimonialController(TestimonialRepository testimonialRepository)
     {
-        this.repository = repository;
+        this.repository = testimonialRepository;
     }
 
     @PostMapping(DEFAULT_REQUEST_PATH)
@@ -30,14 +30,14 @@ public class TestimonialController
     {
         Testimonial testimonial = new Testimonial(testimonialPostData);
         repository.save(testimonial);
-        return ResponseEntity.created(uriComponentsBuilder.path("/depoimentos/{id}").buildAndExpand(testimonial.getId()).toUri()).body(new TestimonialGetDetailedData(testimonial));
+        return ResponseEntity.created(uriComponentsBuilder.path("/depoimentos/{id}").buildAndExpand(testimonial.getId()).toUri()).body(new TestimonialGetData(testimonial));
     }
 
     @GetMapping(DEFAULT_REQUEST_PATH + "/{id}")
     public ResponseEntity getDetailedTestimonial(@PathVariable Long id)
     {
         if(repository.getReferenceById(id).isActive())
-            return ResponseEntity.ok(new TestimonialGetDetailedData(repository.getReferenceById(id)));
+            return ResponseEntity.ok(new TestimonialGetData(repository.getReferenceById(id)));
         else
             return ResponseEntity.notFound().build();
     }
@@ -65,7 +65,7 @@ public class TestimonialController
     {
         Testimonial testimonial = repository.getReferenceById(testimonialPutData.id());
         testimonial.dataUpdate(testimonialPutData);
-        return ResponseEntity.ok(new TestimonialGetDetailedData(testimonial));
+        return ResponseEntity.ok(new TestimonialGetData(testimonial));
     }
 
     @DeleteMapping(DEFAULT_REQUEST_PATH + "/{id}")

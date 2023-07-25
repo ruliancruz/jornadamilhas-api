@@ -13,5 +13,5 @@ public record TestimonialPostData
     String testimonialText,
     @NotBlank
     @Size(max = 255, message = "{validation.imagePath.size.too_long}")
-    String imagePath
+    String photoPath
 ){}

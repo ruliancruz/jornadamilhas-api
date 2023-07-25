@@ -1,0 +1,1 @@
+ALTER TABLE testimonials RENAME COLUMN image_path TO photo_path;

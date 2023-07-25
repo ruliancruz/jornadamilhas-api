@@ -18,7 +18,7 @@ public class Testimonial
     private Long id;
     private String personName;
     private String testimonialText;
-    private String imagePath;
+    private String photoPath;
     private boolean active;
 
     public Testimonial(TestimonialPostData testimonialPostData)
@@ -26,7 +26,7 @@ public class Testimonial
         this.active = true;
         this.personName = testimonialPostData.personName();
         this.testimonialText = testimonialPostData.testimonialText();
-        this.imagePath = testimonialPostData.imagePath();
+        this.photoPath = testimonialPostData.photoPath();
     }
 
     public void delete()
@@ -42,7 +42,7 @@ public class Testimonial
         if(!StringValidation.isNullEmptyOrBlank(testimonialPutData.testimonialText()))
             this.testimonialText = testimonialPutData.testimonialText();
 
-        if(!StringValidation.isNullEmptyOrBlank(testimonialPutData.imagePath()))
-            this.imagePath = testimonialPutData.imagePath();
+        if(!StringValidation.isNullEmptyOrBlank(testimonialPutData.photoPath()))
+            this.photoPath = testimonialPutData.photoPath();
     }
 }
