@@ -19,6 +19,9 @@ public class Destination
     private Long id;
     private String name;
     private String photoPath;
+    private String photoPath2;
+    private String meta;
+    private String description;
     private Float price;
     private boolean active;
 
@@ -27,6 +30,9 @@ public class Destination
         this.active = true;
         this.name = destinationPostData.name();
         this.photoPath = destinationPostData.photoPath();
+        this.photoPath2 = destinationPostData.photoPath2();
+        this.meta = destinationPostData.meta();
+        this.description = destinationPostData.description();
         this.price = destinationPostData.price();
     }
 
@@ -42,6 +48,15 @@ public class Destination
 
         if(!StringValidation.isNullEmptyOrBlank(destinationPutData.photoPath()))
             this.photoPath = destinationPutData.photoPath();
+
+        if(!StringValidation.isNullEmptyOrBlank(destinationPutData.photoPath2()))
+            this.photoPath = destinationPutData.photoPath2();
+
+        if(!StringValidation.isNullEmptyOrBlank(destinationPutData.meta()))
+            this.photoPath = destinationPutData.meta();
+
+        if(!StringValidation.isNullEmptyOrBlank(destinationPutData.description()))
+            this.photoPath = destinationPutData.description();
 
         if(destinationPutData.price() != null)
             this.price = destinationPutData.price();

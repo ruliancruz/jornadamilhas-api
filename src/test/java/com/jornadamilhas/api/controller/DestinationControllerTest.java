@@ -12,7 +12,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -57,7 +56,7 @@ class DestinationControllerTest
     {
         var response = mockMvc.perform(post("/destinos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(destinationPostDataJacksonTester.write(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", 500.0f)).getJson()))
+                        .content(destinationPostDataJacksonTester.write(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f)).getJson()))
                 .andReturn()
                 .getResponse();
 
@@ -66,13 +65,28 @@ class DestinationControllerTest
 
     @Test
     @DisplayName("Must return 200 http code when id chosen in the path is found")
-    void getDetailedDestination_scenario2() throws Exception
+    void getSpecificDestination_scenario1() throws Exception
     {
-        Destination destination = new Destination(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", 500.0f));
+        Destination destination = new Destination(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f));
 
         when(repository.getReferenceById(any())).thenReturn(destination);
 
         var response = mockMvc.perform(get("/destinos/1"))
+                .andReturn()
+                .getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+    }
+
+    @Test
+    @DisplayName("Must return 200 http code when id chosen in the path is found")
+    void getCreatedDestination_scenario1() throws Exception
+    {
+        Destination destination = new Destination(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f));
+
+        when(repository.getReferenceById(any())).thenReturn(destination);
+
+        var response = mockMvc.perform(get("/destinos/created/1"))
                 .andReturn()
                 .getResponse();
 
@@ -94,13 +108,13 @@ class DestinationControllerTest
     @DisplayName("Must return 400 http code when data submitted are invalid")
     void putDestination_scenario1() throws Exception
     {
-        Destination destination = new Destination(new DestinationPostData("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.","storage/images/destination/patagonia1.jpg", 500.0f));
+        Destination destination = new Destination(new DestinationPostData("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.","storage/images/destination/patagonia1.jpg",  "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f));
 
         when(repository.getReferenceById(any())).thenReturn(destination);
 
         var response = mockMvc.perform(put("/destinos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(destinationPutDataJacksonTester.write(new DestinationPutData(1l, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.","storage/images/destination/patagonia1.jpg", 500.0f)).getJson()))
+                        .content(destinationPutDataJacksonTester.write(new DestinationPutData(1l, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae consequat sem.","storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f)).getJson()))
                 .andReturn()
                 .getResponse();
 
@@ -111,13 +125,13 @@ class DestinationControllerTest
     @DisplayName("Must return 200 http code when all data submitted are valid")
     void putDestination_scenario2() throws Exception
     {
-        Destination destination = new Destination(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", 500.0f));
+        Destination destination = new Destination(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f));
 
         when(repository.getReferenceById(any())).thenReturn(destination);
 
         var response = mockMvc.perform(put("/destinos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(destinationPutDataJacksonTester.write(new DestinationPutData(1l,"Patagonia","storage/images/destination/patagonia1.jpg", 500.0f)).getJson()))
+                        .content(destinationPutDataJacksonTester.write(new DestinationPutData(1l, "Patagonia", "storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f)).getJson()))
                 .andReturn()
                 .getResponse();
 
@@ -128,7 +142,7 @@ class DestinationControllerTest
     @DisplayName("Must return 204 http code when id chosen in the path is found")
     void deleteDestination_scenario1() throws Exception
     {
-        Destination destination = new Destination(new DestinationPostData("Patagonia","storage/images/destination/patagonia1.jpg", 500.0f));
+        Destination destination = new Destination(new DestinationPostData("Patagonia", "storage/images/destination/patagonia1.jpg", "storage/images/destination/patagonia2.jpg", "Lorem Ipsum", "Lorem Ipsum", 500.0f));
 
         when(repository.getReferenceById(any())).thenReturn(destination);
 

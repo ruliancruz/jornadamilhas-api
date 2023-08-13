@@ -2,9 +2,6 @@ package com.jornadamilhas.api.controller;
 
 import com.jornadamilhas.api.model.destination.*;
 import jakarta.validation.Valid;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +25,7 @@ public class DestinationController
     {
         Destination destination = new Destination(destinationPostData);
         repository.save(destination);
-        return ResponseEntity.created(uriComponentsBuilder.path("/destinos/{id}").buildAndExpand(destination.getId()).toUri()).body(new DestinationGetData(destination));
+        return ResponseEntity.created(uriComponentsBuilder.path("/destinos/created/{id}").buildAndExpand(destination.getId()).toUri()).body(new DestinationGetSpecificData(destination));
     }
 
     @GetMapping
@@ -39,7 +36,16 @@ public class DestinationController
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getDetailedDestination(@PathVariable Long id)
+    public ResponseEntity getSpecificDestination(@PathVariable Long id)
+    {
+        if(repository.getReferenceById(id).isActive())
+            return ResponseEntity.ok(new DestinationGetSpecificData(repository.getReferenceById(id)));
+        else
+            return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/created/{id}")
+    public ResponseEntity getCreatedDestination(@PathVariable Long id)
     {
         if(repository.getReferenceById(id).isActive())
             return ResponseEntity.ok(new DestinationGetData(repository.getReferenceById(id)));
