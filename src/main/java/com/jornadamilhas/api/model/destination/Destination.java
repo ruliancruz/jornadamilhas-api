@@ -2,6 +2,7 @@ package com.jornadamilhas.api.model.destination;
 
 
 import com.jornadamilhas.api.model.infrastructure.StringValidation;
+import com.jornadamilhas.api.services.OpenAI;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -60,5 +61,10 @@ public class Destination
 
         if(destinationPutData.price() != null)
             this.price = destinationPutData.price();
+    }
+
+    public void generateDescription()
+    {
+        description = OpenAI.generateAIText("Faça um resumo sobre " + name + " enfatizando o porque este lugar é incrível. Utilize uma linguagem informal e até 100 caracteres no máximo em cada parágrafo. Crie 2 parágrafos neste resumo.");
     }
 }

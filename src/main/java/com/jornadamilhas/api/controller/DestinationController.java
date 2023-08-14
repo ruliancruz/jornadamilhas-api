@@ -1,6 +1,7 @@
 package com.jornadamilhas.api.controller;
 
 import com.jornadamilhas.api.model.destination.*;
+import com.jornadamilhas.api.model.infrastructure.StringValidation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,10 @@ public class DestinationController
     public ResponseEntity postDestination(@RequestBody @Valid DestinationPostData destinationPostData, UriComponentsBuilder uriComponentsBuilder)
     {
         Destination destination = new Destination(destinationPostData);
+
+        if(StringValidation.isNullEmptyOrBlank(destinationPostData.description()))
+            destination.generateDescription();
+
         repository.save(destination);
         return ResponseEntity.created(uriComponentsBuilder.path("/destinos/created/{id}").buildAndExpand(destination.getId()).toUri()).body(new DestinationGetSpecificData(destination));
     }

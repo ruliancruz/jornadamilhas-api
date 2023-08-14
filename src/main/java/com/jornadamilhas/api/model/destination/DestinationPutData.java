@@ -23,7 +23,7 @@ public record DestinationPutData
     @Size(max = 160, message = "(validation.meta.size.too_long}")
     String meta,
 
-    @Size(max = 255, message = "(validation.description.size.too_long}")
+    @Size(max = 5000, message = "(validation.description.size.too_long}")
     String description,
 
     Float price

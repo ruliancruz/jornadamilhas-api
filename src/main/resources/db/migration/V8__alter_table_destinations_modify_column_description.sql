@@ -1,0 +1,1 @@
+ALTER TABLE destinations MODIFY COLUMN description varchar(5000);
