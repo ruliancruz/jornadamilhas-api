@@ -10,7 +10,7 @@ Project Developed for Alura Backend Challenge 7.
 | :fire: Challenge     | https://www.alura.com.br/challenges/back-end-7
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev)
+<!-- ![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev) -->
 
 ## Project Details
 
