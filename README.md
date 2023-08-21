@@ -6,7 +6,7 @@ Project Developed for Alura Backend Challenge 7.
 | -------------  | --- |
 | :sparkles: Name        | **Jornada Milhas API**
 | :label: Technologies | Java, Spring Boot, Maven, MySQL
-| :rocket: URL         | Comming son
+| :rocket: URL         | Comming soon
 | :fire: Challenge     | https://www.alura.com.br/challenges/back-end-7
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
