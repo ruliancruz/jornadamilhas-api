@@ -2,15 +2,16 @@ package com.jornadamilhas.api.services;
 
 import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
+import org.springframework.beans.factory.annotation.Value;
 
 public class OpenAI
 {
-    //Place your OpenAI API KEY here
-    private static final String OPENAI_API_KEY = "KEY";
+    @Value("${api.services.openai.apikey}")
+    private static String apiKey;
 
     public static String generateAIText(String prompt)
     {
-        OpenAiService service = new OpenAiService(OPENAI_API_KEY);
+        OpenAiService service = new OpenAiService(apiKey);
         CompletionRequest completionRequest = CompletionRequest.builder()
                 .prompt(prompt)
                 .model("text-davinci-003")
