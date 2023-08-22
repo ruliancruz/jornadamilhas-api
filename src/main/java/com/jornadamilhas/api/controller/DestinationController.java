@@ -49,8 +49,8 @@ public class DestinationController
             return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/created/{id}")
-    public ResponseEntity getCreatedDestination(@PathVariable Long id)
+    @GetMapping("/detalhado/{id}")
+    public ResponseEntity getDetailedDestination(@PathVariable Long id)
     {
         if(repository.getReferenceById(id).isActive())
             return ResponseEntity.ok(new DestinationGetData(repository.getReferenceById(id)));
@@ -64,7 +64,7 @@ public class DestinationController
     {
         Destination destination = repository.getReferenceById(destinationPutData.id());
         destination.dataUpdate(destinationPutData);
-        return ResponseEntity.ok(new DestinationGetData(destination));
+        return ResponseEntity.ok(new DestinationGetSpecificData(destination));
     }
 
     @DeleteMapping("/{id}")

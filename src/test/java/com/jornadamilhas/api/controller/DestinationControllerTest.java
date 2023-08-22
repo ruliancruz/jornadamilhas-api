@@ -86,7 +86,7 @@ class DestinationControllerTest
 
         when(repository.getReferenceById(any())).thenReturn(destination);
 
-        var response = mockMvc.perform(get("/destinos/created/1"))
+        var response = mockMvc.perform(get("/destinos/detalhado/1"))
                 .andReturn()
                 .getResponse();
 

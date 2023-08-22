@@ -6,7 +6,7 @@ import com.theokanning.openai.service.OpenAiService;
 public class OpenAI
 {
     //Place your OpenAI API KEY here
-    private static final String OPENAI_API_KEY = "key";
+    private static final String OPENAI_API_KEY = "KEY";
 
     public static String generateAIText(String prompt)
     {
