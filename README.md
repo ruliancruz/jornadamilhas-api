@@ -22,8 +22,6 @@ The challenge goal is to develop an API to manage travel destinations and testim
 
 ## API Endpoints
 
-Here are the endpoints
-
 ### Testimonial Registration Endpoint
 
 `POST /depoimentos`
