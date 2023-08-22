@@ -253,7 +253,7 @@ Response example:
 
 ```json
 {
-  "id": 1,
+   "id": 1,
     "name": "Watershallow",
     "photoPath": "imageurl42path.jpg",
     "photoPath2": "imageurl43path.jpg",
