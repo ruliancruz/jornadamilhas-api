@@ -2,6 +2,7 @@
 
 Project Developed for Alura Backend Challenge 7.
 
+| :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Name        | **Jornada Milhas API**
 | :label: Technologies | Java, Spring Boot, Maven, MySQL
