@@ -8,7 +8,7 @@ public class OpenAI
 {
     @Value("${api.services.openai.apikey}")
     private static String apiKey;
-
+    
     public static String generateAIText(String prompt)
     {
         OpenAiService service = new OpenAiService(apiKey);
