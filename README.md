@@ -22,8 +22,6 @@ The challenge goal is to develop an API to manage travel destinations and testim
 
 ## API Endpoints
 
-Here are the endpoints
-
 ### Testimonial Registration Endpoint
 
 `POST /depoimentos`
@@ -110,7 +108,7 @@ Request example:
 ```json
 {
     "id": 1,
-    "testimonialText": "This not was fun anymore.",
+    "testimonialText": "This is not was fun anymore.",
     "photoPath": "imageurl4path.jpg"
 }
 ```
@@ -121,7 +119,7 @@ Response example:
 {
     "id": 1,
     "personName": "John Galt",
-    "testimonialText": "This not was fun anymore.",
+    "testimonialText": "This is not was fun anymore.",
     "photoPath": "imageurl4path.jpg"
 }
 ```
@@ -136,7 +134,7 @@ Allow to delete the testimonial that matches the informed id in the endpoint.
 
 `POST /destinos`
 
-Allow registration of a new destination. The body of request must have a JSON object with `name` (destination name), `photoPath` (destination photo URL), `photoPath2` (second destination photo URL), `meta` (destination meta) and `price` (destination price) as required fields that can also have optionally the `description` (destination description) field. If the description isn't informed, the API will auto generate a description for it using the Open AI API, that will require an API key. If done correctly it will return the body of a JSON with the data of the created object.
+Allow registration of a new destination. The body of request must have a JSON object with `name` (destination name), `photoPath` (destination photo URL), `photoPath2` (second destination photo URL), `meta` (destination meta) and `price` (destination price) as required fields that can also have optionally the `description` (destination description) field. If the description isn't informed, the API will auto generate a description for it using the OpenAi API, that will require to setup your OpenAi API key in the environment variable `OPENAI_API_KEY`. If done correctly it will return the body of a JSON with the data of the created object.
 
 Request Example:
 
