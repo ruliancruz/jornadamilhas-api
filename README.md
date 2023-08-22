@@ -16,59 +16,59 @@ Project Developed for Alura Backend Challenge 7.
 
 This is an API REST project developed with Java Spring Boot and MySQL to provide information and resources about travel destinations, with photos, descriptions, prices and testimonials of users.
 
-### Description
+## Description
 
 The challenge goal is to develop an API to manage travel destinations and testimonials, to register, search, modify and remove it, having also integration with an AI language model.
 
-### API Endpoints
+## API Endpoints
 
 Here are the endpoints
 
-#### Testimonial Registration Endpoint
+### Testimonial Registration Endpoint
 
 `POST /depoimentos`
 
-#### Random Testimonials Endpoint
+### Random Testimonials Endpoint
 
 `GET /depoimentos-home`
 
-#### Detailed Testimonial Query By Id Endpoint
+### Detailed Testimonial Query By Id Endpoint
 
 `GET /depoimentos/{id}`
 
-#### Testimonial Update Endpoint
+### Testimonial Update Endpoint
 
 `PUT /depoimentos`
 
-#### Testimonial Removal Endpoint
+### Testimonial Removal Endpoint
 
 `DELETE /depoimentos/{id}`
 
-#### Destination Registration Endpoint
+### Destination Registration Endpoint
 
 `POST /destinos`
 
-#### Destination List Endpoint
+### Destination List Endpoint
 
 `GET /destinos`
 
-#### Testimonial Query By Id Endpoint
+### Testimonial Query By Id Endpoint
 
 `GET /destinos/{id}`
 
-#### Detailed Testimonial Query By Id Endpoint
+### Detailed Testimonial Query By Id Endpoint
 
 `GET /destinos/created/{id}`
 
-#### Destination Update Endpoint
+### Destination Update Endpoint
 
 `PUT /depoimentos`
 
-#### Destination Removal Endpoint
+### Destination Removal Endpoint
 
 `DELETE /depoimentos/{id}`
 
-### Development Progress
+## Development Progress
 
 Challenge: `Finished`
 
