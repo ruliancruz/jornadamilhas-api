@@ -28,7 +28,7 @@ Here are the endpoints
 
 `POST /depoimentos`
 
-Allow registration of a new testimonial. The body of request must have a JSON object with `personName` (name of the testimonial author), `testimonialText` (testimonial text) and `photoPath` (author photo URL) as required fields. If done correctly it will return the body of a JSON with the data of the created object.
+Allow registration of a new testimonial. The body of the request must have a JSON object with `personName` (name of the testimonial author), `testimonialText` (testimonial text) and `photoPath` (author photo URL) as required fields. If done correctly it will return the body of a JSON with the data of the created object.
 
 Request Example:
 
@@ -55,7 +55,7 @@ Response example:
 
 `GET /depoimentos-home`
 
-Returns up to 3 random selected testimonials as a JSON list in the response body.
+Returns up to 3 randomly selected testimonials as a JSON list in the response body.
 
 Response example:
 
@@ -214,9 +214,9 @@ Returns the testimonial that matches the informed id in the endpoint as a JSON o
 
 ### Detailed Destination Query By Id Endpoint
 
-`GET /destinos/created/{id}`
+`GET /destinos/detalhado/{id}`
 
-Returns the testimonial that matches the informed id in the endpoint. It will be returned as a JSON object in the response body. It's used to return the created object in POST and PUT requests on `/destinos` endpoint.
+Returns the testimonial that matches the informed id in the endpoint. It will be returned as a JSON object in the response body. It's used to return the created object in POST and PUT requests on the `/destinos` endpoint.
 
 ```json
 {
