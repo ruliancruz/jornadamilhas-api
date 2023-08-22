@@ -18,7 +18,7 @@ This is an API REST project developed with Java Spring Boot and MySQL to provide
 
 ## Description
 
-The challenge goal is to develop an API to manage travel destinations and testimonials, to register, search, modify and remove it, having also integration with an AI language model.
+The challenge goal is to develop an API to manage travel destinations and testimonials, to register, search, modify and remove it, having also integration with an AI-powered language model.
 
 ## API Endpoints
 
