@@ -108,7 +108,7 @@ Request example:
 ```json
 {
     "id": 1,
-    "testimonialText": "This is not was fun anymore.",
+    "testimonialText": "This is not fun anymore.",
     "photoPath": "imageurl4path.jpg"
 }
 ```
@@ -119,7 +119,7 @@ Response example:
 {
     "id": 1,
     "personName": "John Galt",
-    "testimonialText": "This is not was fun anymore.",
+    "testimonialText": "This is not fun anymore.",
     "photoPath": "imageurl4path.jpg"
 }
 ```
