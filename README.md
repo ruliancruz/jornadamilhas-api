@@ -14,7 +14,7 @@ Project Developed for Alura Backend Challenge 7.
 
 ## Project Details
 
-This is an API REST project developed with Java Spring Boot and MySQL to provide information and resources about travel destinations, with photos, descriptions, prices and testimonials of users.
+This is an API REST project developed with Java, Spring Boot, Maven and MySQL to provide information and resources about travel destinations, with photos, descriptions, prices and testimonials of users. It also has an integration with OpenAI API.
 
 ## Description
 
