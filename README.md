@@ -5,7 +5,7 @@ Project Developed for Alura Backend Challenge 7.
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Name        | **Jornada Milhas API**
-| :label: Technologies | Java, Spring Boot, Maven, MySQL
+| :label: Technologies | Java 20, Spring Boot, Maven, MySQL
 | :rocket: URL         | Comming soon
 | :fire: Challenge     | https://www.alura.com.br/challenges/back-end-7
 
@@ -14,7 +14,7 @@ Project Developed for Alura Backend Challenge 7.
 
 ## Project Details
 
-This is an API REST project developed with Java, Spring Boot, Maven and MySQL to provide information and resources about travel destinations, with photos, descriptions, prices and testimonials of users. It also has an integration with OpenAI API.
+This is an API REST project developed with Java 20, Spring Boot, Maven and MySQL to provide information and resources about travel destinations, with photos, descriptions, prices and testimonials of users. It also has an integration with OpenAI API.
 
 ## Description
 
